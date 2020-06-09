@@ -1,0 +1,100 @@
+# coding=utf-8
+
+"""Data generators for translation data-sets."""
+
+
+
+from __future__ import absolute_import
+
+from __future__ import division
+
+from __future__ import print_function
+
+
+
+
+
+# Dependency imports
+
+
+
+from tensor2tensor.data_generators import problem
+
+from tensor2tensor.models import transformer
+
+from tensor2tensor.data_generators import translate
+
+from tensor2tensor.utils import registry
+
+
+
+
+
+TRAIN_SET = [
+
+    ["a-remote-url/dummy.txt", ("train.tok.src", "train.tok.tgt")]
+
+]
+
+
+
+DEV_SET = [
+
+    ["a-remote-url/dummy.txt", ("tune.tok.src", "tune.tok.tgt")]
+
+]
+
+
+
+
+
+
+@registry.register_problem
+
+class !ProblemName(translate.TranslateProblem):
+
+    """Problem spec for a Translate Task"""
+
+
+
+
+
+    @property
+
+    def approx_vocab_size(self):
+
+        return !VOCAB_SIZE
+
+
+
+    # @property
+
+    # def vocab_filename(self):
+
+    #     return "vocab.%d" % self.approx_vocab_size
+
+
+    @property
+
+    def additional_reserved_tokens(self):
+
+        return !RES_TOKENS
+
+
+
+    def source_data_files(self, dataset_split):
+
+        train = dataset_split == problem.DatasetSplit.TRAIN
+
+        return TRAIN_SET if train else DEV_SET
+
+!HP_SPLIT
+
+@registry.register_hparams
+def !HPARAMS_NAME():
+        hparams = transformer.transformer_base()
+
+        !HPARAMS_ASSIGN
+
+        return hparams
+

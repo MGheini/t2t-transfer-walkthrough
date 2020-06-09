@@ -17,7 +17,7 @@ Instructions for transfer learning using my T2T setup
     ```
     bash tfmexp.sh -w <DESIRED_EXPERIMENT_FOLDER_NAME>
                    -d <PATH_TO_DATA_DIRECTORY>
-                   -l <SRD_LANG>
+                   -l <SRC_LANG>
                    -n <DATA_SPLIT>
                    -N -p <NEW_PROBLEM_NAME>
     ```
@@ -26,11 +26,18 @@ Instructions for transfer learning using my T2T setup
 
      - `<DESIRED_EXPERIMENT_FOLDER_NAME>` is the path to your experiment directory.
      - `<PATH_TO_DATA_DIRECTORY>` is the path to the directory you have your training data in. The naming of the training files should follow a specific convention that we touch on soon.
-     - `<SRD_LANG>` is the source language.
+     - `<SRC_LANG>` is the source language.
      - `<DATA_SPLIT>` is the split of data you will be using. If you will be using all of the data, this will be 1. If you will be using a quarter of the data, this will be 4.
      - `<NEW_PROBLEM_NAME>` is the problem name you will be registering with Tensor2Tensor. Names should be in **UpperCamelCase**. If you are creating a problem for the first time use `-N -p`. If you are using a problem from earlier just use  `-p`.
-     
-I'm putting few example commands here, which is only accessible if you're signed in using your ISI account.
+
+### Data File Naming Conventions
+Training files in the data directory should follow this convention: `<DATA_SOURCE_PREFIX>.train_<SPLIT>.<LANG>`. For instance, `wmt.train_2.uzb` indicates training file corresponding to half of the Uzbek data made available by wmt (hypothetical example, I don't remember wmt carrying any Uzbek data). `wmt.train_2.en` is its English side. I like to use 3-letter or 2-letter language codes for `<LANG>`. Whatever you use as `<LANG>` for the source language, should be passed as `<SRC_LANG>` above.
+
+`tfmexp.sh` assumes `<DATA_SOURCE_PREFIX>` to be `elisa` by default. You can change it by passing `-x` argument, e.g. `-x wmt`.
+
+Tune and test files should similarly be named `<DATA_SOURCE_PREFIX>.tune.<LANG>` and `<DATA_SOURCE_PREFIX>.test.<LANG>`.
+
+I'm putting few example commands here, which is only accessible if you're signed in using your ISI account. It will hopefully make everything more clear in case this was all too overwhelming.
 
 ## Contact
 Feel free to contact me on Slack or through email if you face any problems. You can simply make an issue here too.

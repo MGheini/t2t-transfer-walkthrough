@@ -7,7 +7,9 @@ def main():
         with open("template") as t:
                 template = t.read().split("!HP_SPLIT")
         problems = {}
-        problem_path = "/home/nlg-05/gheini/miniconda2/envs/t2tenv/lib/python3.5/site-packages/tensor2tensor/data_generators/"
+        # TODO: update problem_path with path to data_generators.
+        # example: /path/to/tensor2tensor/data_generators/ (ending in /)
+        problem_path = ""
         batch_size = "4096"
         vocab_size = "32768"
         save_problem = None

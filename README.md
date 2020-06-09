@@ -15,7 +15,7 @@ Instructions for transfer learning using my T2T setup
 3. Run an example training session using the following command to make sure you've got everything right up to this point.
 
     ```
-    bash tfmexp.sh -w <DESIRED_EXPERIMENT_FOLDER_NAME>
+    bash tfmexp.sh -w <DESIRED_EXPERIMENT_DIRECTORY_NAME>
                    -d <PATH_TO_DATA_DIRECTORY>
                    -l <SRC_LANG>
                    -n <DATA_SPLIT>
@@ -24,7 +24,7 @@ Instructions for transfer learning using my T2T setup
   
     Where,
 
-     - `<DESIRED_EXPERIMENT_FOLDER_NAME>` is the path to your experiment directory.
+     - `<DESIRED_EXPERIMENT_DIRECTORY_NAME>` is the path to your experiment directory.
      - `<PATH_TO_DATA_DIRECTORY>` is the path to the directory you have your training data in. The naming of the training files should follow a specific convention that we touch on soon.
      - `<SRC_LANG>` is the source language.
      - `<DATA_SPLIT>` is the split of data you will be using. If you will be using all of the data, this will be 1. If you will be using a quarter of the data, this will be 4.
@@ -37,7 +37,12 @@ Training files in the data directory should follow this convention: `<DATA_SOURC
 
 Tune and test files should similarly be named `<DATA_SOURCE_PREFIX>.tune.<LANG>` and `<DATA_SOURCE_PREFIX>.test.<LANG>`.
 
-I'm putting few example commands here, which is only accessible if you're signed in using your ISI account. It will hopefully make everything more clear in case this was all too overwhelming.
+## Transfer Learning
+Running a transfer learning session is very similar to running a regular training session described above. You just need to additionally:
+1. Have the vocabulary of your parent model copied in the `data` directory within the experiment directory.
+2. Point to the checkpoint you want to use as your initialization by passing `-f` argument to `tfmexp.sh`.
+
+I'm putting a few examples [here](https://docs.google.com/document/d/1igOR5N56uUFsPwBEc8LiXhSTts7Hiv_D81gLfUsjB84/edit?usp=sharing), which is only accessible if you're signed in using your USC/ISI account. It will hopefully make everything more clear in case this was all too overwhelming.
 
 ## Contact
 Feel free to contact me on Slack or through email if you face any problems. You can simply make an issue here too.

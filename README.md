@@ -7,5 +7,8 @@ Instructions for transfer learning using my T2T setup
 
 **Prerequisites:** Have [Tensor2Tensor](https://github.com/tensorflow/tensor2tensor) installed, and be reasonably comfortable with it. For me, its code gets complicated very quickly. So I've always been loosely comfortable with it. You should be good by going through README.
 
-## Running the Setup:
+## Running the Setup
 
+
+## Contact
+Feel free to contact me on Slack or through email if you face any problems. You can also simply make an issue here too.
